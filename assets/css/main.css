@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css?family=Space+Mono');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,600');
+@import url('font-awesome.min.css');
+@import url('https://fonts.googleapis.com/css?family=Cutive+Mono');
+* {
+	margin: 0;
+	padding: 0;
+	
+}
+
+body,html {
+	/*background: 
+	height: 100%;*/
+	background: url('../images/wall1.png');
+	background-attachment: fixed;
+	background-size: cover;
+	/* transition: 5s background ease-in-out; .5s how long transition should take */
+	height: 100%;
+}
+
+
+.navbar-default .navbar-brand{
+       color: white;
+       text-shadow: 2px 0.5px ;
+       font-family: "Source Sans Pro", sans-serif;
+       font-size: 35px;
+}
+
+.main {
+	display: table;
+	width: 100%;
+	height: 100%;
+	
+}
+
+.info {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.info h2 {
+	color: #fefefe;
+	
+	text-transform: uppercase;
+	font-weight: 200;
+	font-size: 75px;
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+.info p {
+	padding: 0 3rem;
+	color: #ffeecc;
+	text-align: center;
+	font-weight: 10;
+	font-family: 'Cutive Mono', monospace;
+}
+
+.navbar {
+	padding-top: 0;
+	padding-bottom: 0;
+	
+}
+
+.center {
+	display: table-row;
+	vertical-align: bottom; 
+}
+
+.navbar-expand-sm .navbar-nav .nav-link {
+	padding: 0.75rem 1.5rem;
+}
+.info li {
+	margin: 0 0.25rem;
+	
+}
+
+.center li{
+	margin:0 0.3rem;
+}
+
+.info a {
+	 border: 1px solid rgb(231, 226, 226);
+	border-radius: 5px; 
+	color: white;
+	transition: 0.3s background ease-in-out;
+}
+
+.center a{
+	color: white;
+
+
+}
+.info a:hover {
+	color: #232323;
+	background-color: #fefefe;
+}
+
+/* animat */
+.animate {
+	-webkit-animation: animatezoom 0.6s;
+	animation: animatezoom 0.6s
+}
+@-webkit-keyframes animatezoom {
+	from {-webkit-transform: scale(0)} 
+	to {-webkit-transform: scale(1)}
+}
+	
+@keyframes animatezoom {
+	from {transform: scale(0)} 
+	to {transform: scale(1)}
+}
+
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+	transition-duration: 0.1s;
+    transition-property: transform;
+}
+
+.footer-page { 
+	background: #454545;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.2);
+}
+
+@-webkit-keyframes hvr-pulse {
+	25% {
+	  -webkit-transform: scale(1.1);
+	  transform: scale(0.9);
+	}
+	75% {
+	  -webkit-transform: scale(1.0);
+	  transform: scale(1.0);
+	}
+  }
+  @keyframes hvr-pulse {
+	25% {
+	  -webkit-transform: scale(1.1);
+	  transform: scale(0.9);
+	}
+	75% {
+	  -webkit-transform: scale(1.0);
+	  transform: scale(1.0);
+	}
+  }
+  .hvr-pulse:hover{
+	display: inline-block;
+	vertical-align: middle;
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  }
+  .hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active {
+	-webkit-animation-name: hvr-pulse;
+	animation-name: hvr-pulse;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-timing-function: linear;
+	animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+  }
+  
+
+
+.footer {
+	float: left;	
+	width: 100%;
+}
+
+.footer p {
+	font-family: 'Cutive Mono', monospace;
+	color: white;
+}
+
+hr{
+	height:0.5px;
+	color:rgb(194, 188, 188);
+	background-color:rgb(218, 214, 214);
+	width:50%;  
+	margin-top: 100px;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.vl {
+	width: 1%;
+	border-left: 1px solid rgb(218, 214, 214);
+	height: 70px;
+	margin-left: auto;
+	margin-right: auto;
+}

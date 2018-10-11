@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+	padding: 0;
+}
+body,html {
+	/*background: 
+	height: 100%;*/
+	background: url('../images/wall1.png');
+	background-attachment: fixed;
+    background-size: cover;
+    overflow: hidden;
+	/* transition: 5s background ease-in-out; .5s how long transition should take */
+	height: 100%;
+}
+#name {
+	color: #ffeecc;
+	font-size: 4rem;
+	font-weight: 300;
+	line-height: 1.6;
+}
+.content {
+	padding-top: 15%; 
+}
+
+.no-bg-tron {
+	background: rgba(0,0,0,0);
+}
+
+@media screen and (max-width: 992px) {
+    #name {
+    	font-size: 1.9rem;
+    }
+}

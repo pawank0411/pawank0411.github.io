@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+*{
+    margin: 0;
+	padding: 0;
+}
+body,html {
+	/*background: 
+	height: 100%;*/
+	background: url('../images/wall1.png');
+	background-attachment: fixed;
+    background-size: cover;
+    overflow: hidden;
+	/* transition: 5s background ease-in-out; .5s how long transition should take */
+	height: 100%;
+}
+.card{
+    width: 30%;
+    margin-left: 480px;
+    margin-right: 520px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    background: transparent;
+    border: 0.8px solid rgb(231, 226, 226);
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+.card img{
+    width: 55%;
+    align-self: center;
+    margin-top: 20px;
+    border-radius: 13px; 
+    border: 2.5px solid rgb(231, 226, 226);
+}
+.card p{
+    color: #ffeecc;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+}
+.animate {
+	-webkit-animation: animatezoom 0.6s;
+	animation: animatezoom 0.6s
+}
+@-webkit-keyframes animatezoom {
+	from {-webkit-transform: scale(0)} 
+	to {-webkit-transform: scale(1)}
+}
+	
+@keyframes animatezoom {
+	from {transform: scale(0)} 
+	to {transform: scale(1)}
+}
+hr{
+	height:0.01px;
+	color:rgb(194, 188, 188);
+	background-color:rgb(218, 214, 214);
+	width:99.5%;  
+	
+}
