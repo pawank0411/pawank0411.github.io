@@ -5,13 +5,6 @@
 	padding: 0;
 }
 body,html {
-	/*background: 
-	height: 100%;*/
-	background: url('../images/wall1.png');
-	background-attachment: fixed;
-    background-size: cover;
-    
-	/* transition: 5s background ease-in-out; .5s how long transition should take */
 	height: 100%;
 }
 .card{
