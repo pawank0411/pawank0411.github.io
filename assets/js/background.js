@@ -2,10 +2,10 @@
 // var colors = new Array(
 //     url('../images/wall2.png')
 // );
-var imgs = ["url('https://images2.imgbox.com/6b/2a/mOdIsvv5_o.png')",
-    "url('https://images2.imgbox.com/19/97/1sxkAC9F_o.png')",
-    "url('https://images2.imgbox.com/76/ef/bwUBlz4Z_o.png')",
-    "url('https://images2.imgbox.com/32/4f/lN6kIo0V_o.png')"];
+var imgs = ["url('https://images2.imgbox.com/ca/2c/G5oehQ5s_o.png')",
+    "url('https://images2.imgbox.com/4a/7a/HH5enj4s_o.png')",
+    "url('https://images2.imgbox.com/65/17/JXagDbK4_o.png')",
+    "url('https://images2.imgbox.com/d8/5c/7aCIuC3P_o.png')"];
 var active = 0;
 
 changeBg();
@@ -20,8 +20,9 @@ function changeBg() {
 
 setInterval(changeBg, 4000);
 
-// https://images2.imgbox.com/6b/2a/mOdIsvv5_o.png
-// https://images2.imgbox.com/19/97/1sxkAC9F_o.png
 
-// https://images2.imgbox.com/76/ef/bwUBlz4Z_o.png
-// https://images2.imgbox.com/32/4f/lN6kIo0V_o.png
+
+// https://images2.imgbox.com/65/17/JXagDbK4_o.png
+// https://images2.imgbox.com/4a/7a/HH5enj4s_o.png
+// https://images2.imgbox.com/ca/2c/G5oehQ5s_o.png
+// https://images2.imgbox.com/d8/5c/7aCIuC3P_o.png
