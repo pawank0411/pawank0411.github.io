@@ -10,7 +10,7 @@ body,html {
 	background: url('../images/wall1.png');
 	background-attachment: fixed;
     background-size: cover;
-    overflow: hidden;
+    
 	/* transition: 5s background ease-in-out; .5s how long transition should take */
 	height: 100%;
 }
