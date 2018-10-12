@@ -1,7 +1,6 @@
 
-// var colors = new Array(
-//     url('../images/wall2.png')
-// );
+document.body.style.backgroundColor = 'rgba(35, 35, 35,0.7)';
+
 var imgs = ["url('https://images2.imgbox.com/ca/2c/G5oehQ5s_o.png')",
     "url('https://images2.imgbox.com/4a/7a/HH5enj4s_o.png')",
     "url('https://images2.imgbox.com/65/17/JXagDbK4_o.png')",
