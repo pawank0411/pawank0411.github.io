@@ -1,15 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Cinzel');
 * {
     margin: 0;
 	padding: 0;
 }
 body,html {
 	height: 100%;
+	background-attachment: fixed;
 }
 #name {
 	color: #ffeecc;
 	font-size: 5rem;
 	font-weight: 300;
 	line-height: 1.6;
+	font-family: 'Cinzel', serif;
 }
 
 .no-bg-tron {
