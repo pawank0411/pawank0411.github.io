@@ -14,11 +14,11 @@ function changeBg() {
     document.body.style.backgroundImage = imgs[active % imgs.length];
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundAttachment = 'fixed';
-    document.body.style.transition = "background 1s";
+    document.body.style.transition = "background 2s";
     active++;
 }
 
-setInterval(changeBg, 2000);
+setInterval(changeBg, 4000);
 
 // https://images2.imgbox.com/6b/2a/mOdIsvv5_o.png
 // https://images2.imgbox.com/19/97/1sxkAC9F_o.png
