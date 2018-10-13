@@ -1,6 +1,6 @@
 # Pawan Kumar Gorai Portfolio
 
-![homepage]('/screenshots/homepage.png')
+![homepage](https://github.com/diogenesdauster/Portfolio/blob/update-readme/screenshots/homepage.png)
 
 My name is Pawan Kumar Gorai. I am a B.Tech Student (IT) in ITER, S'O'A University and an Android development enthusiast. This is my personal webpage portfolio.
 
