@@ -9,7 +9,7 @@ body,html {
 }
 
 .card{
-    width: 70%;
+    width: 55%;
     margin: 60px auto;
     background: transparent;
     border: 0.8px solid rgb(231, 226, 226);
@@ -60,7 +60,21 @@ hr{
 
 @media only screen and (max-width: 905px) {
     .card {
-        width: 70%;
+        width: 90%;
+    }
+    .card img{
+        align-self: center;
+        width: 80%;
+    }
+    button{
+        width: 100%;
+        border-radius: 3px;
+    }
+    hr{
+        width: 100%;
+    }
+    h2{
+        text-align: center;
     }
 }
 button{
@@ -101,3 +115,16 @@ h2{
     color: #ffffff;
     font-weight:100; 
 }
+a{
+    font-size: 1.2rem;
+    color: #ffeecc;
+    font-family: 'Quicksand', sans-serif;
+    transition: 0.3s background ease-in-out;
+}
+a:hover{
+    color: white;
+}
+.fa-2x{
+    font-size: 1.2rem;
+}
+
