@@ -93,15 +93,10 @@
     .section-title { color:var(--plum); letter-spacing:-.04em; font-weight:850; }
     .section-copy { color:var(--muted); }
 
-    /* Keep Dussehra (Night 10) centered on its own final row at every screen size. */
-    #dayGrid > .col:last-child {
-      flex: 0 0 100%;
-      max-width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-    #dayGrid > .col:last-child > .day-card {
-      width: min(100%, 356px);
+    /* Center the lone final-row card on wider screens, without breaking mobile columns. */
+    @media (min-width:768px) {
+      #dayGrid > .col:last-child { flex: 0 0 100%; max-width:100%; display:flex; justify-content:center; }
+      #dayGrid > .col:last-child > .day-card { width:min(100%, 356px); }
     }
 
     .day-card {
@@ -117,11 +112,11 @@
     .photo-placeholder .camera { font-size:2rem; line-height:1; }
     .photo-placeholder strong { font-size:.92rem; color:var(--plum); }
     .photo-placeholder small { font-size:.72rem; overflow-wrap:anywhere; }
-    .day-art { min-height:105px; padding:1rem; position:relative; overflow:hidden; display:flex; align-items:flex-end; background:linear-gradient(135deg,#4b1b65,#8e326e); color:white; }
+    .day-art { min-height:112px; padding:2.15rem 1rem 1rem; position:relative; overflow:hidden; display:flex; align-items:flex-end; background:linear-gradient(135deg,#4b1b65,#8e326e); color:white; }
     .day-art:before { content:""; position:absolute; width:140px;height:140px;right:-45px;top:-58px;border:1px solid rgba(255,255,255,.25);border-radius:50%;box-shadow:0 0 0 15px rgba(255,255,255,.045),0 0 0 32px rgba(255,255,255,.035); }
-    .day-number { position:absolute; top:.8rem;left:1rem; font-size:.72rem;letter-spacing:.13em;color:rgba(255,255,255,.72);font-weight:800; }
+    .day-number { position:absolute; top:.72rem;left:1rem; right:1rem; font-size:.72rem;letter-spacing:.13em;color:rgba(255,255,255,.78);font-weight:800;line-height:1.2; z-index:2; }
     .day-symbol { position:absolute;right:1rem;bottom:.4rem;font-size:2.2rem;opacity:.95; }
-    .day-name { position:relative;font-size:1.15rem;font-weight:800; }
+    .day-name { position:relative; z-index:1; font-size:1.15rem;font-weight:800;line-height:1.25; max-width:calc(100% - 2rem); overflow-wrap:anywhere; }
     .day-body { padding:1rem; flex:1; display:flex; flex-direction:column; gap:.6rem; }
     .day-desc { font-size:.88rem; color:var(--muted); min-height:2.5em; }
     .day-link { display:flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none;background:#f7edf7;color:var(--plum);border-radius:12px;padding:.8rem .75rem;font-weight:800;font-size:.92rem;min-height:46px; }
@@ -179,7 +174,10 @@
       .hero { border-radius:23px; }
       .hero-art { min-height:150px; }
       .mandala { width:150px; }
-      .day-art { min-height:92px; }
+      .day-art { min-height:112px; padding:2.05rem .9rem .9rem; }
+      .day-number { top:.65rem; left:.9rem; right:.9rem; font-size:.68rem; }
+      .day-name { font-size:1rem; line-height:1.28; max-width:calc(100% - 1.6rem); }
+      .day-symbol { right:.7rem; bottom:.3rem; font-size:1.8rem; }
       .day-body { padding:.8rem; }
       .day-name { font-size:1.03rem; }
       .day-desc { font-size:.82rem; }
@@ -190,6 +188,7 @@
     }
   </style>
 </head>
+
 <body>
   <a class="skip-link" href="#gallery">Skip to photo gallery</a>
   <div class="topbar py-2">
@@ -304,7 +303,7 @@
             </div>
           </div>
           <div class="col-12 col-md-8 col-lg-5">
-            <h3 class="developer-name mb-2">Pawan</h3>
+            <h3 class="developer-name mb-2">Pawan Gorai</h3>
             <p class="developer-bio mb-0">This website is created with love to preserve and share our Navratri memories with the entire colony community. Hope it helps everyone relive the beautiful moments of these nine special days. 🙏<span class="hi-line">यह वेबसाइट हमारी नवरात्रि की यादों को सहेजने और पूरी कॉलोनी के साथ साझा करने के लिए प्यार से बनाई गई है। आशा है कि यह सभी को इन नौ खास दिनों के खूबसूरत पल फिर से जीने में मदद करेगी।</span></p>
           </div>
           <div class="col-12 col-lg-4">
