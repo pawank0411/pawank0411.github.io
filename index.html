@@ -93,11 +93,9 @@
     .section-title { color:var(--plum); letter-spacing:-.04em; font-weight:850; }
     .section-copy { color:var(--muted); }
 
-    /* Center the lone final-row card on wider screens, without breaking mobile columns. */
-    @media (min-width:768px) {
-      #dayGrid > .col:last-child { flex: 0 0 100%; max-width:100%; display:flex; justify-content:center; }
-      #dayGrid > .col:last-child > .day-card { width:min(100%, 356px); }
-    }
+    /* Album cards use the same responsive grid rhythm; the final card is not specially centered. */
+    #dayGrid > .col { min-width: 0; }
+    #dayGrid > .col > .day-card { width: 100%; min-width: 0; }
 
     .day-card {
       height:100%; display:flex; flex-direction:column; background:var(--card); border:1px solid var(--line);
@@ -112,14 +110,14 @@
     .photo-placeholder .camera { font-size:2rem; line-height:1; }
     .photo-placeholder strong { font-size:.92rem; color:var(--plum); }
     .photo-placeholder small { font-size:.72rem; overflow-wrap:anywhere; }
-    .day-art { min-height:112px; padding:2.15rem 1rem 1rem; position:relative; overflow:hidden; display:flex; align-items:flex-end; background:linear-gradient(135deg,#4b1b65,#8e326e); color:white; }
+    .day-art { min-height:105px; padding:1rem; position:relative; overflow:hidden; display:flex; align-items:flex-end; background:linear-gradient(135deg,#4b1b65,#8e326e); color:white; }
     .day-art:before { content:""; position:absolute; width:140px;height:140px;right:-45px;top:-58px;border:1px solid rgba(255,255,255,.25);border-radius:50%;box-shadow:0 0 0 15px rgba(255,255,255,.045),0 0 0 32px rgba(255,255,255,.035); }
-    .day-number { position:absolute; top:.72rem;left:1rem; right:1rem; font-size:.72rem;letter-spacing:.13em;color:rgba(255,255,255,.78);font-weight:800;line-height:1.2; z-index:2; }
+    .day-number { position:absolute; top:.8rem;left:1rem; font-size:.72rem;letter-spacing:.13em;color:rgba(255,255,255,.72);font-weight:800; }
     .day-symbol { position:absolute;right:1rem;bottom:.4rem;font-size:2.2rem;opacity:.95; }
-    .day-name { position:relative; z-index:1; font-size:1.15rem;font-weight:800;line-height:1.25; max-width:calc(100% - 2rem); overflow-wrap:anywhere; }
+    .day-name { position:relative;font-size:1.15rem;font-weight:800; }
     .day-body { padding:1rem; flex:1; display:flex; flex-direction:column; gap:.6rem; }
     .day-desc { font-size:.88rem; color:var(--muted); min-height:2.5em; }
-    .day-link { display:flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none;background:#f7edf7;color:var(--plum);border-radius:12px;padding:.8rem .75rem;font-weight:800;font-size:.92rem;min-height:46px; }
+    .day-link { display:flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none;background:#f7edf7;color:var(--plum);border-radius:12px;padding:.8rem .75rem;font-weight:800;font-size:.92rem;min-height:46px;margin-top:auto; }
     .day-link:hover { background:var(--plum);color:white; }
     .day-link.disabled { opacity:.5; cursor:not-allowed; }
     .notice { background:#fff1d7;border:1px solid #f3dfb4;border-radius:16px;padding:1rem;color:#65451a;font-size:.9rem; }
@@ -174,10 +172,7 @@
       .hero { border-radius:23px; }
       .hero-art { min-height:150px; }
       .mandala { width:150px; }
-      .day-art { min-height:112px; padding:2.05rem .9rem .9rem; }
-      .day-number { top:.65rem; left:.9rem; right:.9rem; font-size:.68rem; }
-      .day-name { font-size:1rem; line-height:1.28; max-width:calc(100% - 1.6rem); }
-      .day-symbol { right:.7rem; bottom:.3rem; font-size:1.8rem; }
+      .day-art { min-height:92px; }
       .day-body { padding:.8rem; }
       .day-name { font-size:1.03rem; }
       .day-desc { font-size:.82rem; }
@@ -186,9 +181,145 @@
       .developer-bio { font-size:.96rem; }
       .copyright-line { font-size:.76rem; }
     }
+
+    /* New photo-led memories hero and highlight cards */
+    .hero-memory{min-height:480px;padding:clamp(1.25rem,3vw,3rem)!important}
+    .hero-memory .hero-copy{position:relative;z-index:2}
+    .hero-memory h1{font-size:clamp(2.35rem,4.2vw,4.35rem)}
+    .hero-memory .hero-copy p{font-size:1rem}
+    .hero-photo-collage{height:350px;position:relative;max-width:760px;margin:auto}
+    .hero-photo{position:absolute;overflow:hidden;background:linear-gradient(135deg,#f5c76b,#8d3273 58%,#2b1043);background-size:cover;background-position:center;border:2px solid rgba(255,255,255,.92);box-shadow:0 18px 35px rgba(12,4,24,.25);border-radius:28px}
+    .hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(30,8,39,.45),transparent 55%);pointer-events:none}
+    .hero-photo span{position:absolute;z-index:1;bottom:1rem;left:1rem;font-size:.8rem;font-weight:800;color:#fff;text-shadow:0 2px 8px #25112d}
+    .hero-photo-main{z-index:2;left:22%;top:1%;width:58%;height:92%;transform:rotate(4deg);background-color:#743064}
+    .hero-photo-left{left:2%;top:16%;width:40%;height:70%;transform:rotate(-6deg)}
+    .hero-photo-right{right:1%;top:24%;width:34%;height:66%;transform:rotate(7deg)}
+    .hero-photo.has-image span{opacity:0}
+    .hero-sparkle{position:absolute;right:12%;top:0;color:var(--gold);font-size:3rem;z-index:3;transform:rotate(12deg)}
+    .hero-controls{display:flex;align-items:center;justify-content:center;gap:.55rem;margin-top:.65rem}
+    .hero-arrow{display:grid;place-items:center;padding:0;border:1px solid rgba(255,255,255,.72);color:white;background:rgba(39,12,55,.48);border-radius:50%;width:38px;height:38px;font-size:1.5rem;line-height:1;text-align:center}
+    .hero-dots{display:flex;align-items:center;justify-content:center;gap:.45rem;margin:0 .45rem}
+    .hero-dot{border:0;border-radius:50%;width:9px;height:9px;background:rgba(255,255,255,.65);padding:0}
+    .hero-dot.active{width:19px;border-radius:9px;background:var(--gold)}
+    .highlights-strip{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:12px;align-items:stretch}
+    .highlight-card{--tint:#8e326e;position:relative;min-width:0;height:146px;border:1px solid rgba(255,255,255,.7);border-radius:13px;overflow:hidden;padding:0;text-align:left;color:white;background:linear-gradient(135deg,var(--tint),#32134d);box-shadow:0 6px 15px rgba(39,15,55,.12);isolation:isolate;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
+    .highlight-card:hover,.highlight-card:focus-visible{transform:translateY(-4px);box-shadow:0 12px 24px rgba(39,15,55,.24);outline:2px solid var(--gold);outline-offset:2px}
+    .highlight-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .35s ease}
+    .highlight-card:hover img{transform:scale(1.06)}
+    .highlight-card:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(22,8,35,.03) 5%,color-mix(in srgb,var(--tint) 24%,transparent) 35%,rgba(25,7,33,.82) 100%),linear-gradient(135deg,color-mix(in srgb,var(--tint) 40%,transparent),transparent 75%)}
+    .highlight-card .highlight-label{position:absolute;left:.7rem;right:.5rem;bottom:.65rem;display:block;text-shadow:0 1px 5px rgba(0,0,0,.45);font-size:.77rem;line-height:1.2;font-weight:800}
+    .highlight-card .highlight-label small{display:block;font-size:.68rem;font-weight:500;margin-bottom:.25rem}
+    .highlight-card .highlight-hindi{display:block;font-size:.75rem;font-weight:500;margin-top:.25rem}
+    .highlight-card .highlight-fallback{position:absolute;inset:0;display:grid;place-items:center;font-size:2rem;opacity:.3;z-index:-2}
+    .memory-lightbox[hidden]{display:none!important}
+    .memory-lightbox{position:fixed;inset:0;z-index:2000;background:rgba(12,5,20,.92);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;padding:clamp(1rem,4vw,3rem);color:white}
+    body.lightbox-open{overflow:hidden}
+    .lightbox-content{width:min(100%,1100px);height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.65rem;min-height:0}
+    .lightbox-count{align-self:flex-start;color:rgba(255,255,255,.75);font-size:.9rem}
+    .lightbox-content>img{display:block;max-width:100%;max-height:calc(100% - 120px);object-fit:contain;border-radius:12px;box-shadow:0 20px 70px rgba(0,0,0,.45)}
+    .lightbox-caption{font-weight:750;text-align:center}.lightbox-original{color:#f5c76b;font-size:.9rem}
+    .lightbox-thumbs{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.5rem;max-width:100%;overflow:visible;padding:.25rem;scrollbar-width:none}
+    .lightbox-thumbs::-webkit-scrollbar{display:none}
+    .lightbox-thumb{width:62px;height:48px;flex:0 0 auto;padding:0;border:2px solid transparent;border-radius:7px;overflow:hidden;background:#452650;opacity:.65}
+    .lightbox-thumb.active{border-color:var(--gold);opacity:1}
+    .lightbox-thumb img{width:100%;height:100%;object-fit:cover}
+    .lightbox-close,.lightbox-arrow{position:absolute;z-index:2;border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.1);color:white;display:grid;place-items:center;padding:0;text-align:center;line-height:1;font-family:Arial,sans-serif;border-radius:50%;cursor:pointer}
+    .lightbox-close{right:1.2rem;top:1.2rem;width:46px;height:46px;font-size:2rem;line-height:1}
+    .lightbox-arrow{top:50%;transform:translateY(-50%);width:48px;height:48px;font-size:2rem;line-height:1}
+    .lightbox-prev{left:1.2rem}.lightbox-next{right:1.2rem}
+    /* Fix overlapping text in View Album cards */
+    .day-art {
+      min-height: 145px;
+      height: auto;
+      padding: 2.1rem 1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      gap: 0.35rem;
+      overflow: hidden;
+    }
+
+    .day-number {
+      position: absolute;
+      top: 0.75rem;
+      left: 1rem;
+      right: 3rem;
+      line-height: 1.2;
+      z-index: 2;
+    }
+
+    .day-name {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      font-size: clamp(1rem, 3.5vw, 1.15rem);
+      line-height: 1.3;
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
+
+    .day-name .hi-line {
+      margin-top: 0.3rem;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+    }
+
+    .day-symbol {
+      right: 0.65rem;
+      bottom: 0.4rem;
+      z-index: 0;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    /* Responsive adjustments for phones */
+    @media (max-width: 575px) {
+      .day-art {
+        min-height: 150px;
+        padding: 2.2rem 0.85rem 0.85rem;
+      }
+
+      .day-number {
+        top: 0.7rem;
+        left: 0.85rem;
+      }
+
+      .day-name {
+        font-size: 1rem;
+        line-height: 1.35;
+      }
+
+      .day-name .hi-line {
+        font-size: 0.88em;
+        line-height: 1.5;
+      }
+
+      .day-symbol {
+        right: 0.4rem;
+        bottom: 0.25rem;
+        font-size: 1.8rem;
+      }
+    }
+    @media(max-width:1100px){.highlights-strip{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.highlight-card{height:150px}}
+    @media(max-width:767px){.hero-photo-collage{height:260px;margin-top:.5rem}.hero-photo{border-radius:18px}.hero-memory{border-radius:22px}.highlights-strip{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px}.highlight-card{height:clamp(132px,30vw,158px)}.highlight-card:last-child{grid-column:auto;max-width:none;width:100%;justify-self:stretch}.lightbox-arrow{width:38px;height:38px}.lightbox-prev{left:.35rem}.lightbox-next{right:.35rem}.lightbox-content>img{max-height:calc(100% - 145px)}.lightbox-thumbs{max-width:90vw}.lightbox-close{right:.65rem;top:.65rem}}
+    @media(max-width:575px){.highlights-strip{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.highlight-card{height:clamp(125px,38vw,150px)}.highlight-card .highlight-label{left:.55rem;right:.45rem;bottom:.55rem;font-size:.73rem}.highlight-card .highlight-hindi{font-size:.7rem}#dayGrid.row-cols-2>*{flex:0 0 auto;width:100%}.day-photo{height:clamp(150px,48vw,190px)}.day-body{padding:.9rem}.day-link{overflow-wrap:anywhere}}
+    @media(max-width:360px){.highlights-strip{grid-template-columns:minmax(0,1fr)}.highlight-card{height:150px}.hero-memory h1{font-size:2rem}}
+    @media(prefers-reduced-motion:reduce){.highlight-card,.highlight-card img{transition:none}}
+    /* Extra narrow screens */
+    @media (max-width: 360px) {
+      .day-art {
+        min-height: 160px;
+        padding-left: 0.7rem;
+        padding-right: 0.7rem;
+      }
+
+      .day-name {
+        font-size: 0.95rem;
+      }
+    }
   </style>
 </head>
-
 <body>
   <a class="skip-link" href="#gallery">Skip to photo gallery</a>
   <div class="topbar py-2">
@@ -209,70 +340,51 @@
   </nav>
 
   <main>
-    <section class="container pt-4 pt-md-5 pb-4">
-      <div class="hero p-4 p-md-5 reveal">
-        <div class="row align-items-center g-3">
-          <div class="col-lg-7 py-md-3">
+    <section class="container pt-3 pt-md-3 pb-2">
+      <div class="hero hero-memory p-4 p-md-5 reveal">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-5 py-md-2 hero-copy">
             <div class="eyebrow mb-3">✦ A celebration to remember<span class="hi-line">यादों में बस जाने वाला उत्सव</span></div>
             <h1 class="mb-3">Nine nights.<br><span style="color:#f5c76b">Countless</span> memories.<span class="hi-line">नौ रातें, अनगिनत यादें।</span></h1>
             <p class="mb-4">The smiles, the colours, the garba and the moments we shared. Revisit our Navratri celebrations, all in one easy place.<span class="hi-line">मुस्कानें, रंग, गरबा और साथ बिताए खूबसूरत पल। हमारी नवरात्रि की सभी यादें यहाँ एक ही जगह फिर से जीएँ।</span></p>
             <div class="d-flex flex-wrap gap-2">
-              <a class="btn btn-gold bilingual-label" href="#gallery">Explore all nine days <span aria-hidden="true">↗</span><span class="hi-line">नौ दिनों की तस्वीरें देखें</span></a>
-              <button class="btn btn-outline-light" id="shareButton" type="button">↗ Share gallery</button>
+              <a class="btn btn-gold bilingual-label" href="#highlights">Explore all nine days ↗ <span class="hi-line">नौ दिनों की तस्वीरें देखें</span></a>
+              <button class="btn btn-outline-light" id="shareButton" type="button">♧ Share gallery<span class="hi-line">गैलरी साझा करें</span></button>
             </div>
           </div>
-          <div class="col-lg-5">
-            <div class="hero-art" aria-hidden="true">
-              <div class="dandiya-stage">
-                <span class="dance-spark a">✦</span><span class="dance-spark b">✧</span><span class="dance-spark c">✦</span>
-                <svg class="dance-art" viewBox="0 0 360 260" role="img" aria-label="Illustration of a couple dancing dandiya">
-                  <defs>
-                    <linearGradient id="skirtPink" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff9dbb"/><stop offset="1" stop-color="#e83f83"/></linearGradient>
-                    <linearGradient id="skirtGold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe6a0"/><stop offset="1" stop-color="#eaa43b"/></linearGradient>
-                  </defs>
-                  <ellipse cx="182" cy="226" rx="112" ry="13" fill="#160b2a" opacity=".24"/>
-                  <g class="dancer-left">
-                    <path d="M118 111 Q93 130 88 157 L70 185" fill="none" stroke="#f7b28d" stroke-width="12" stroke-linecap="round"/>
-                    <path d="M139 110 Q158 95 165 77" fill="none" stroke="#f7b28d" stroke-width="12" stroke-linecap="round"/>
-                    <path d="M108 143 Q130 126 151 145 L164 197 Q130 218 91 197 Z" fill="url(#skirtPink)" stroke="#ffd6e2" stroke-width="2"/>
-                    <path d="M99 166 L155 166 M96 183 L160 183" stroke="#ffd46f" stroke-width="4" stroke-dasharray="4 7"/>
-                    <path d="M112 103 L145 103 L151 143 L105 143 Z" fill="#f5c76b"/>
-                    <circle cx="129" cy="76" r="19" fill="#b96d4b"/>
-                    <path d="M109 76 Q106 49 131 52 Q151 52 149 73 L142 63 Q126 69 109 76" fill="#24152e"/>
-                    <path d="M112 105 L91 126 L83 157" fill="none" stroke="#f7b28d" stroke-width="10" stroke-linecap="round"/>
-                    <path d="M142 106 L159 87" fill="none" stroke="#f7b28d" stroke-width="10" stroke-linecap="round"/>
-                    <path d="M110 197 L105 224 M145 197 L151 224" stroke="#f7b28d" stroke-width="11" stroke-linecap="round"/>
-                    <path d="M98 225 L112 225 M145 225 L160 225" stroke="#f5c76b" stroke-width="8" stroke-linecap="round"/>
-                    <circle cx="129" cy="76" r="2" fill="#32134d"/>
-                    <path d="M121 85 Q129 91 137 84" fill="none" stroke="#6e342e" stroke-width="2" stroke-linecap="round"/>
-                  </g>
-                  <g class="dancer-right">
-                    <path d="M222 111 Q201 96 195 77" fill="none" stroke="#d9956d" stroke-width="12" stroke-linecap="round"/>
-                    <path d="M248 111 Q270 128 278 155" fill="none" stroke="#d9956d" stroke-width="12" stroke-linecap="round"/>
-                    <path class="skirt-right" d="M218 140 L251 140 L278 199 Q237 216 194 199 Z" fill="url(#skirtGold)" stroke="#fff0bf" stroke-width="2"/>
-                    <path d="M203 166 L265 166 M210 184 L273 184" stroke="#fff1bc" stroke-width="4" stroke-dasharray="4 7"/>
-                    <path d="M215 105 L248 105 L255 145 L209 145 Z" fill="#42c6b5"/>
-                    <circle cx="232" cy="76" r="19" fill="#9a5a40"/>
-                    <path d="M212 74 Q207 50 232 51 Q253 53 252 76 L243 64 Q229 69 212 74" fill="#20162e"/>
-                    <path d="M218 107 L197 88" fill="none" stroke="#d9956d" stroke-width="10" stroke-linecap="round"/>
-                    <path d="M247 108 L269 128 L278 155" fill="none" stroke="#d9956d" stroke-width="10" stroke-linecap="round"/>
-                    <path d="M210 199 L205 224 M251 199 L258 224" stroke="#d9956d" stroke-width="11" stroke-linecap="round"/>
-                    <path d="M197 225 L211 225 M252 225 L267 225" stroke="#f5c76b" stroke-width="8" stroke-linecap="round"/>
-                    <circle cx="232" cy="76" r="2" fill="#32134d"/>
-                    <path d="M224 85 Q232 91 240 84" fill="none" stroke="#6e342e" stroke-width="2" stroke-linecap="round"/>
-                  </g>
-                  <g stroke-linecap="round">
-                    <path class="stick-left" d="M158 86 L184 48" stroke="#ffe6a0" stroke-width="7"/><path class="stick-left" d="M158 86 L184 48" stroke="#b36a30" stroke-width="2" stroke-dasharray="4 8"/>
-                    <path class="stick-right" d="M201 86 L177 47" stroke="#ff9dbb" stroke-width="7"/><path class="stick-right" d="M201 86 L177 47" stroke="#fff0bf" stroke-width="2" stroke-dasharray="4 8"/>
-                  </g>
-                  <g fill="#f5c76b"><circle cx="180" cy="34" r="3"/><circle cx="66" cy="112" r="3"/><circle cx="294" cy="98" r="3"/></g>
-                </svg>
-              </div>
+          <div class="col-lg-7">
+            <div class="hero-photo-collage" aria-label="Featured Navratri memories">
+              <div class="hero-photo hero-photo-back hero-photo-left" data-hero-photo="1"><span>Navratri memories</span></div>
+              <div class="hero-photo hero-photo-back hero-photo-right" data-hero-photo="2"><span>Garba nights</span></div>
+              <div class="hero-photo hero-photo-main" data-hero-photo="0"><span>Celebrate together</span></div>
+              <span class="hero-sparkle" aria-hidden="true">✳</span>
+            </div>
+            <div class="hero-controls" aria-label="Featured photo controls">
+              <button type="button" class="hero-arrow" id="heroPrev" aria-label="Previous featured photo">‹</button>
+              <div class="hero-dots" id="heroDots" aria-label="Choose featured photo"></div>
+              <button type="button" class="hero-arrow" id="heroNext" aria-label="Next featured photo">›</button>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <section class="container pb-3 pb-md-4" id="highlights">
+      <div class="highlights-strip" id="highlightCards" aria-label="Navratri highlights"></div>
+    </section>
+
+    <div class="memory-lightbox" id="memoryLightbox" role="dialog" aria-modal="true" aria-label="Navratri photo carousel" hidden>
+      <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close photo gallery">×</button>
+      <button type="button" class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Previous photo">‹</button>
+      <div class="lightbox-content">
+        <div class="lightbox-count" id="lightboxCount">1 / 1</div>
+        <img id="lightboxImage" alt="Navratri memory">
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+        <a class="lightbox-original" id="lightboxOriginal" target="_blank" rel="noopener noreferrer" hidden>Open original photo ↗</a>
+        <div class="lightbox-thumbs" id="lightboxThumbs" aria-label="Choose photo"></div>
+      </div>
+      <button type="button" class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Next photo">›</button>
+    </div>
 
     <section class="container py-4" id="gallery">
       <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-end gap-2 mb-4 reveal">
@@ -431,6 +543,168 @@ if (linkedinLink && contactConfig.linkedinUrl) {
       card.append(photo, art, body);
       col.append(card);
       grid.append(col);
+    });
+
+
+    // Photo-led hero and clickable highlight carousels; drive-link cards below remain unchanged.
+    const highlightConfig = Array.isArray(privateConfig.highlights) ? privateConfig.highlights : [];
+    const heroImages = Array.isArray(privateConfig.heroImages) ? privateConfig.heroImages : [];
+    const heroFrames = [...document.querySelectorAll("[data-hero-photo]")];
+    let heroIndex = 0, heroTimer = null;
+    function safeLinkUrl(value) {
+      if (typeof value !== "string") return "";
+      try { const u = new URL(value, location.href); return ["http:","https:"].includes(u.protocol) ? u.href : ""; }
+      catch (_) { return ""; }
+    }
+    // Accept ordinary Google Drive share links in coverUrl/photos and turn them into image URLs.
+    // The original share link remains usable separately as a click-through href.
+    function safeImageUrl(value) {
+      const safe = safeLinkUrl(value);
+      if (!safe) return "";
+      try {
+        const u = new URL(safe);
+        if (u.hostname === "drive.google.com" || u.hostname === "docs.google.com") {
+          let id = "";
+          const pathMatch = u.pathname.match(/\/file\/d\/([^/]+)/);
+          if (pathMatch) id = pathMatch[1];
+          if (!id) id = u.searchParams.get("id") || "";
+          if (id && /^[a-zA-Z0-9_-]+$/.test(id)) {
+            // Drive's thumbnail endpoint is generally more suitable for <img> than its viewer page.
+            return `https://drive.google.com/thumbnail?id=${encodeURIComponent(id)}&sz=w1600`;
+          }
+        }
+        return safe;
+      } catch (_) { return ""; }
+    }
+    function paintHero() {
+      heroFrames.forEach((frame, slot) => {
+        const idx = (heroIndex + slot) % Math.max(heroImages.length, 1);
+        const item = heroImages[idx] || {};
+        const src = safeImageUrl(item.src);
+        frame.querySelector("img")?.remove();
+        frame.classList.toggle("has-image", Boolean(src));
+        if (src) {
+          const img = document.createElement("img");
+          img.src = src; img.alt = item.alt || "Navratri celebration"; img.loading = "lazy";
+          img.style.cssText = "position:absolute;inset:0;width:100%;height:100%;object-fit:cover";
+          img.addEventListener("error", () => { img.remove(); frame.classList.remove("has-image"); });
+          frame.prepend(img);
+        }
+      });
+      const dots = document.getElementById("heroDots");
+      dots.replaceChildren();
+      heroImages.forEach((item, i) => {
+        const dot = document.createElement("button");
+        dot.type = "button"; dot.className = "hero-dot" + (i === heroIndex ? " active" : "");
+        dot.setAttribute("aria-label", `Show featured photo ${i + 1}`);
+        dot.addEventListener("click", () => { heroIndex = i; paintHero(); restartHeroTimer(); });
+        dots.append(dot);
+      });
+    }
+    function moveHero(step) {
+      if (!heroImages.length) return;
+      heroIndex = (heroIndex + step + heroImages.length) % heroImages.length;
+      paintHero();
+    }
+    function restartHeroTimer() {
+      if (heroTimer) clearInterval(heroTimer);
+      if (heroImages.length > 1) heroTimer = setInterval(() => moveHero(1), 5000);
+    }
+    document.getElementById("heroPrev").addEventListener("click", () => { moveHero(-1); restartHeroTimer(); });
+    document.getElementById("heroNext").addEventListener("click", () => { moveHero(1); restartHeroTimer(); });
+    paintHero(); restartHeroTimer();
+
+    const highlightRoot = document.getElementById("highlightCards");
+    const defaultHighlights = [
+      ["Maa Shailputri","माँ शैलपुत्री","Night 01","#d47745"],["Maa Brahmacharini","माँ ब्रह्मचारिणी","Night 02","#a55b58"],
+      ["Maa Chandraghanta","माँ चंद्रघंटा","Night 03","#592a70"],["Maa Kushmanda","माँ कूष्मांडा","Night 04","#913a76"],
+      ["Maa Skandamata","माँ स्कंदमाता","Night 05","#b33d72"],["Maa Katyayani","माँ कात्यायनी","Night 06","#592a70"],
+      ["Maa Kalaratri","माँ कालरात्रि","Night 07","#a43b68"],["Maa Mahagauri","माँ महागौरी","Night 08","#a23e79"],
+      ["Maa Siddhidatri","माँ सिद्धिदात्री","Night 09","#883a70"],["Vijayadashami","विजयादशमी","Night 10","#d47745"]
+    ];
+    const highlightItems = defaultHighlights.map((fallback, i) => ({...fallback, ...(highlightConfig[i] || {})}));
+    const lightbox = document.getElementById("memoryLightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxCaption = document.getElementById("lightboxCaption");
+    const lightboxCount = document.getElementById("lightboxCount");
+    const lightboxThumbs = document.getElementById("lightboxThumbs");
+    const lightboxOriginal = document.getElementById("lightboxOriginal");
+    let activeHighlight = 0, activePhoto = 0, currentPhotos = [], lastFocused = null;
+    function normalizePhotos(item) {
+      return (Array.isArray(item.photos) ? item.photos : []).map((photo, i) => {
+        if (typeof photo === "string") return {src:safeImageUrl(photo), href:"", alt:`${item.title || "Navratri"} photo ${i+1}`};
+        return {src:safeImageUrl(photo && photo.src), href:safeLinkUrl(photo && photo.href), alt:(photo && photo.alt) || `${item.title || "Navratri"} photo ${i+1}`};
+      }).filter(photo => photo.src);
+    }
+    highlightItems.forEach((item, i) => {
+      const card = document.createElement("button");
+      card.type = "button"; card.className = "highlight-card"; card.style.setProperty("--tint", item.tint || defaultHighlights[i][3]);
+      card.setAttribute("aria-label", `Open ${item.title || defaultHighlights[i][0]} photo highlights`);
+      const cover = safeImageUrl(item.coverUrl);
+      if (cover) {
+        const img = document.createElement("img"); img.src = cover; img.alt = ""; img.loading = "lazy";
+        img.addEventListener("error", () => img.remove()); card.append(img);
+      } else {
+        const fallback = document.createElement("span"); fallback.className = "highlight-fallback"; fallback.textContent = ["✺","✦","❋","✷","✺","✧","❋","✷","✺","✦"][i]; fallback.setAttribute("aria-hidden","true"); card.append(fallback);
+      }
+      const label = document.createElement("span"); label.className = "highlight-label";
+      const night = document.createElement("small"); night.textContent = item.night || defaultHighlights[i][2];
+      const title = document.createElement("span"); title.textContent = item.title || defaultHighlights[i][0];
+      const hindi = document.createElement("span"); hindi.className = "highlight-hindi"; hindi.textContent = item.hindi || defaultHighlights[i][1];
+      label.append(night, title, hindi); card.append(label);
+      card.addEventListener("click", () => openHighlight(i, card));
+      highlightRoot.append(card);
+    });
+    function renderLightboxPhoto() {
+      const item = highlightItems[activeHighlight] || {};
+      const photo = currentPhotos[activePhoto];
+      lightboxCount.textContent = currentPhotos.length ? `${activePhoto + 1} / ${currentPhotos.length}` : "Photo highlights";
+      lightboxCaption.textContent = `${item.title || "Navratri"}${item.hindi ? " · " + item.hindi : ""}`;
+      lightboxImage.hidden = !photo;
+      lightboxThumbs.replaceChildren();
+      if (photo) {
+        lightboxImage.src = photo.src; lightboxImage.alt = photo.alt;
+        lightboxOriginal.hidden = !photo.href;
+        if (photo.href) lightboxOriginal.href = photo.href;
+        currentPhotos.forEach((thumbPhoto, i) => {
+          const button = document.createElement("button"); button.type = "button";
+          button.className = "lightbox-thumb" + (i === activePhoto ? " active" : "");
+          button.setAttribute("aria-label", `View photo ${i+1}`);
+          const img = document.createElement("img"); img.src = thumbPhoto.src; img.alt = ""; button.append(img);
+          button.addEventListener("click", () => { activePhoto = i; renderLightboxPhoto(); });
+          lightboxThumbs.append(button);
+        });
+      } else {
+        lightboxImage.removeAttribute("src");
+        lightboxOriginal.hidden = true;
+        const note = document.createElement("p"); note.className = "text-center px-3"; note.textContent = "Photo links for this highlight haven’t been added yet. Add 10–15 direct image URLs in site-config.js to activate this carousel.";
+        lightboxThumbs.append(note);
+      }
+      document.getElementById("lightboxPrev").disabled = currentPhotos.length < 2;
+      document.getElementById("lightboxNext").disabled = currentPhotos.length < 2;
+    }
+    function openHighlight(index, trigger) {
+      activeHighlight = index; currentPhotos = normalizePhotos(highlightItems[index]); activePhoto = 0; lastFocused = trigger;
+      renderLightboxPhoto(); lightbox.hidden = false; document.body.classList.add("lightbox-open");
+      document.getElementById("lightboxClose").focus();
+    }
+    function closeLightbox() {
+      lightbox.hidden = true; document.body.classList.remove("lightbox-open");
+      if (lastFocused) lastFocused.focus();
+    }
+    function stepPhoto(step) {
+      if (!currentPhotos.length) return;
+      activePhoto = (activePhoto + step + currentPhotos.length) % currentPhotos.length; renderLightboxPhoto();
+    }
+    document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
+    document.getElementById("lightboxPrev").addEventListener("click", () => stepPhoto(-1));
+    document.getElementById("lightboxNext").addEventListener("click", () => stepPhoto(1));
+    lightbox.addEventListener("click", event => { if (event.target === lightbox) closeLightbox(); });
+    document.addEventListener("keydown", event => {
+      if (lightbox.hidden) return;
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowLeft") stepPhoto(-1);
+      if (event.key === "ArrowRight") stepPhoto(1);
     });
 
     function showToast(message) {

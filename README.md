@@ -57,3 +57,16 @@ All changeable values are in `site-config.js`: 10 Google Drive album links, 10 c
 3. Put day images in `images/` using `day-01.jpg` through `day-10.jpg`.
 
 **GitHub Pages caveat:** There is no `.gitignore` in this version, so `site-config.js` and the day images can be committed and deployed with the site. Public images, album links, and LinkedIn URL are visible to visitors once deployed; do not place sensitive information here.
+
+
+## Photo-led hero and highlight carousel
+
+The homepage now has a photo-led hero and a row of 10 highlight cards above the existing day/Drive album cards. The existing Drive album card section and its `days[].driveUrl` links are unchanged.
+
+Edit `site-config.js`:
+- `heroImages`: add 3 direct, public image URLs (`src`) for the large hero collage/slideshow.
+- `highlights`: each card has `coverUrl` for its thumbnail and `photos` for its full-screen carousel.
+- Add about 10–15 photo objects per highlight, e.g. `{ src: "https://example.com/photo.jpg", href: "https://example.com/original", alt: "Garba night" }`. `href` is optional.
+- `tint` sets the colour wash on each thumbnail. The thumbnail uses a CSS gradient overlay above the live image URL, so it stays colourful without needing to download or sample the image pixels. This works even when an image host blocks canvas pixel access.
+
+You can paste normal Google Drive *file* share links (for example `https://drive.google.com/file/d/FILE_ID/view?usp=drive_link`) directly into `coverUrl` and `photos`; the website extracts the file ID and converts it to a Drive thumbnail image URL. Set each image to General access → Anyone with the link. Folder links are not individual photos. Drive may still block hotlinking in some cases; if an image fails, host it on a static image host or use a supported embed/proxy. Keep the Drive album folder links in `days[].driveUrl` as before.
