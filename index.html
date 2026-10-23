@@ -227,97 +227,11 @@
     .lightbox-close{right:1.2rem;top:1.2rem;width:46px;height:46px;font-size:2rem;line-height:1}
     .lightbox-arrow{top:50%;transform:translateY(-50%);width:48px;height:48px;font-size:2rem;line-height:1}
     .lightbox-prev{left:1.2rem}.lightbox-next{right:1.2rem}
-    /* Fix overlapping text in View Album cards */
-    .day-art {
-      min-height: 145px;
-      height: auto;
-      padding: 2.1rem 1rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-end;
-      gap: 0.35rem;
-      overflow: hidden;
-    }
-
-    .day-number {
-      position: absolute;
-      top: 0.75rem;
-      left: 1rem;
-      right: 3rem;
-      line-height: 1.2;
-      z-index: 2;
-    }
-
-    .day-name {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      font-size: clamp(1rem, 3.5vw, 1.15rem);
-      line-height: 1.3;
-      overflow-wrap: anywhere;
-      word-break: normal;
-    }
-
-    .day-name .hi-line {
-      margin-top: 0.3rem;
-      line-height: 1.45;
-      overflow-wrap: anywhere;
-    }
-
-    .day-symbol {
-      right: 0.65rem;
-      bottom: 0.4rem;
-      z-index: 0;
-      opacity: 0.45;
-      pointer-events: none;
-    }
-
-    /* Responsive adjustments for phones */
-    @media (max-width: 575px) {
-      .day-art {
-        min-height: 150px;
-        padding: 2.2rem 0.85rem 0.85rem;
-      }
-
-      .day-number {
-        top: 0.7rem;
-        left: 0.85rem;
-      }
-
-      .day-name {
-        font-size: 1rem;
-        line-height: 1.35;
-      }
-
-      .day-name .hi-line {
-        font-size: 0.88em;
-        line-height: 1.5;
-      }
-
-      .day-symbol {
-        right: 0.4rem;
-        bottom: 0.25rem;
-        font-size: 1.8rem;
-      }
-    }
     @media(max-width:1100px){.highlights-strip{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.highlight-card{height:150px}}
     @media(max-width:767px){.hero-photo-collage{height:260px;margin-top:.5rem}.hero-photo{border-radius:18px}.hero-memory{border-radius:22px}.highlights-strip{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px}.highlight-card{height:clamp(132px,30vw,158px)}.highlight-card:last-child{grid-column:auto;max-width:none;width:100%;justify-self:stretch}.lightbox-arrow{width:38px;height:38px}.lightbox-prev{left:.35rem}.lightbox-next{right:.35rem}.lightbox-content>img{max-height:calc(100% - 145px)}.lightbox-thumbs{max-width:90vw}.lightbox-close{right:.65rem;top:.65rem}}
     @media(max-width:575px){.highlights-strip{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.highlight-card{height:clamp(125px,38vw,150px)}.highlight-card .highlight-label{left:.55rem;right:.45rem;bottom:.55rem;font-size:.73rem}.highlight-card .highlight-hindi{font-size:.7rem}#dayGrid.row-cols-2>*{flex:0 0 auto;width:100%}.day-photo{height:clamp(150px,48vw,190px)}.day-body{padding:.9rem}.day-link{overflow-wrap:anywhere}}
     @media(max-width:360px){.highlights-strip{grid-template-columns:minmax(0,1fr)}.highlight-card{height:150px}.hero-memory h1{font-size:2rem}}
     @media(prefers-reduced-motion:reduce){.highlight-card,.highlight-card img{transition:none}}
-    /* Extra narrow screens */
-    @media (max-width: 360px) {
-      .day-art {
-        min-height: 160px;
-        padding-left: 0.7rem;
-        padding-right: 0.7rem;
-      }
-
-      .day-name {
-        font-size: 0.95rem;
-      }
-    }
   </style>
 </head>
 <body>
@@ -559,6 +473,10 @@ if (linkedinLink && contactConfig.linkedinUrl) {
     // Accept ordinary Google Drive share links in coverUrl/photos and turn them into image URLs.
     // The original share link remains usable separately as a click-through href.
     function safeImageUrl(value) {
+      // Allow local relative image paths when opening index.html directly.
+      if (!/^https?:\/\//i.test(value)) {
+        return value;
+      }
       const safe = safeLinkUrl(value);
       if (!safe) return "";
       try {
