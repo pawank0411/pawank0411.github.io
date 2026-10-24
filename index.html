@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <meta name="google-adsense-account" content="ca-pub-7255339257613393">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#32134d">
@@ -201,7 +202,14 @@
     .hero-dots{display:flex;align-items:center;justify-content:center;gap:.45rem;margin:0 .45rem}
     .hero-dot{border:0;border-radius:50%;width:9px;height:9px;background:rgba(255,255,255,.65);padding:0}
     .hero-dot.active{width:19px;border-radius:9px;background:var(--gold)}
-    .highlights-strip{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:12px;align-items:stretch}
+    .highlights-heading{display:flex;align-items:center;justify-content:center;gap:clamp(.45rem,2vw,1rem);text-align:center;margin:0 auto 1rem;padding:.45rem 0 .65rem;color:#54205f;font-weight:900;letter-spacing:.14em;text-transform:uppercase;font-size:clamp(1.05rem,2.5vw,1.35rem);line-height:1.2;position:relative;width:100%;}
+    .highlights-heading:before,.highlights-heading:after{content:"✦ ━━━";color:#c17b39;font-size:clamp(.7rem,2vw,1rem);letter-spacing:.04em;white-space:nowrap;flex:0 1 100px;overflow:hidden}
+    .highlights-heading:after{content:"━━━ ✦"}
+    .highlights-heading span{display:flex;flex-direction:column;align-items:center;gap:.2rem;flex-shrink:0}
+    .highlights-heading small{display:block;font-size:.78em;letter-spacing:.04em;text-transform:none;color:#8b3273;font-weight:800}
+    @media(max-width:400px){.highlights-heading{gap:.35rem}.highlights-heading:before,.highlights-heading:after{content:"✦ ━━";flex-basis:48px}.highlights-heading:after{content:"━━ ✦"}}
+    .highlights-strip{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:12px;align-items:stretch;scrollbar-width:none}
+    .highlights-strip::-webkit-scrollbar{display:none}
     .highlight-card{--tint:#8e326e;position:relative;min-width:0;height:146px;border:1px solid rgba(255,255,255,.7);border-radius:13px;overflow:hidden;padding:0;text-align:left;color:white;background:linear-gradient(135deg,var(--tint),#32134d);box-shadow:0 6px 15px rgba(39,15,55,.12);isolation:isolate;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
     .highlight-card:hover,.highlight-card:focus-visible{transform:translateY(-4px);box-shadow:0 12px 24px rgba(39,15,55,.24);outline:2px solid var(--gold);outline-offset:2px}
     .highlight-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .35s ease}
@@ -227,10 +235,10 @@
     .lightbox-close{right:1.2rem;top:1.2rem;width:46px;height:46px;font-size:2rem;line-height:1}
     .lightbox-arrow{top:50%;transform:translateY(-50%);width:48px;height:48px;font-size:2rem;line-height:1}
     .lightbox-prev{left:1.2rem}.lightbox-next{right:1.2rem}
-    @media(max-width:1100px){.highlights-strip{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.highlight-card{height:150px}}
-    @media(max-width:767px){.hero-photo-collage{height:260px;margin-top:.5rem}.hero-photo{border-radius:18px}.hero-memory{border-radius:22px}.highlights-strip{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px}.highlight-card{height:clamp(132px,30vw,158px)}.highlight-card:last-child{grid-column:auto;max-width:none;width:100%;justify-self:stretch}.lightbox-arrow{width:38px;height:38px}.lightbox-prev{left:.35rem}.lightbox-next{right:.35rem}.lightbox-content>img{max-height:calc(100% - 145px)}.lightbox-thumbs{max-width:90vw}.lightbox-close{right:.65rem;top:.65rem}}
-    @media(max-width:575px){.highlights-strip{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.highlight-card{height:clamp(125px,38vw,150px)}.highlight-card .highlight-label{left:.55rem;right:.45rem;bottom:.55rem;font-size:.73rem}.highlight-card .highlight-hindi{font-size:.7rem}#dayGrid.row-cols-2>*{flex:0 0 auto;width:100%}.day-photo{height:clamp(150px,48vw,190px)}.day-body{padding:.9rem}.day-link{overflow-wrap:anywhere}}
-    @media(max-width:360px){.highlights-strip{grid-template-columns:minmax(0,1fr)}.highlight-card{height:150px}.hero-memory h1{font-size:2rem}}
+    @media(max-width:1100px){.highlights-strip{display:flex;flex-wrap:nowrap;gap:12px;overflow-x:auto;overflow-y:hidden;padding:.25rem .1rem .75rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}.highlights-strip .highlight-card{flex:0 0 185px;width:185px;height:150px;scroll-snap-align:start}}
+    @media(max-width:767px){.hero-photo-collage{height:320px;margin-top:.5rem}.hero-photo{border-radius:18px}.hero-memory{border-radius:22px}.highlights-strip .highlight-card{flex-basis:160px;width:160px;height:145px}.hero-photo img{object-fit:contain!important;background:#32134d}.hero-photo-main{left:24%;width:52%;height:88%;top:4%}.hero-photo-left{left:1%;width:39%;height:68%;top:17%}.hero-photo-right{right:1%;width:35%;height:65%;top:25%}.lightbox-arrow{width:38px;height:38px}.lightbox-prev{left:.35rem}.lightbox-next{right:.35rem}.lightbox-content>img{max-height:calc(100% - 145px)}.lightbox-thumbs{max-width:90vw}.lightbox-close{right:.65rem;top:.65rem}}
+    @media(max-width:575px){.highlights-strip{gap:9px}.highlights-strip .highlight-card{flex-basis:148px;width:148px;height:138px}.hero-photo-collage{height:300px}.hero-photo{border-radius:14px}.highlight-card .highlight-label{left:.55rem;right:.45rem;bottom:.55rem;font-size:.73rem}.highlight-card .highlight-hindi{font-size:.7rem}#dayGrid.row-cols-2>*{flex:0 0 auto;width:100%}.day-photo{height:clamp(150px,48vw,190px)}.day-body{padding:.9rem}.day-link{overflow-wrap:anywhere}}
+    @media(max-width:400px){.hero-photo-collage{height:285px}.hero-memory h1{font-size:2rem}}
     @media(prefers-reduced-motion:reduce){.highlight-card,.highlight-card img{transition:none}}
   </style>
 </head>
@@ -254,6 +262,11 @@
   </nav>
 
   <main>
+    <section class="container pt-3 pt-md-4 pb-3 pb-md-4" id="highlights">
+      <h2 class="highlights-heading"><span>Highlights<small>झलकियाँ</small></span></h2>
+      <div class="highlights-strip" id="highlightCards" aria-label="Navratri highlights"></div>
+    </section>
+
     <section class="container pt-3 pt-md-3 pb-2">
       <div class="hero hero-memory p-4 p-md-5 reveal">
         <div class="row align-items-center g-4">
@@ -283,10 +296,6 @@
       </div>
     </section>
 
-    <section class="container pb-3 pb-md-4" id="highlights">
-      <div class="highlights-strip" id="highlightCards" aria-label="Navratri highlights"></div>
-    </section>
-
     <div class="memory-lightbox" id="memoryLightbox" role="dialog" aria-modal="true" aria-label="Navratri photo carousel" hidden>
       <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close photo gallery">×</button>
       <button type="button" class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Previous photo">‹</button>
@@ -296,6 +305,10 @@
         <div class="lightbox-caption" id="lightboxCaption"></div>
         <a class="lightbox-original" id="lightboxOriginal" target="_blank" rel="noopener noreferrer" hidden>Open original photo ↗</a>
         <div class="lightbox-thumbs" id="lightboxThumbs" aria-label="Choose photo"></div>
+        <a class="view-full-album" id="viewFullAlbum" href="#" target="_blank" rel="noopener noreferrer" hidden>
+  View Full Album ↗
+  <span class="hi-line">पूरा एल्बम देखें ↗</span>
+</a>
       </div>
       <button type="button" class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Next photo">›</button>
     </div>
@@ -473,10 +486,6 @@ if (linkedinLink && contactConfig.linkedinUrl) {
     // Accept ordinary Google Drive share links in coverUrl/photos and turn them into image URLs.
     // The original share link remains usable separately as a click-through href.
     function safeImageUrl(value) {
-      // Allow local relative image paths when opening index.html directly.
-      if (!/^https?:\/\//i.test(value)) {
-        return value;
-      }
       const safe = safeLinkUrl(value);
       if (!safe) return "";
       try {
@@ -578,6 +587,10 @@ if (linkedinLink && contactConfig.linkedinUrl) {
       const photo = currentPhotos[activePhoto];
       lightboxCount.textContent = currentPhotos.length ? `${activePhoto + 1} / ${currentPhotos.length}` : "Photo highlights";
       lightboxCaption.textContent = `${item.title || "Navratri"}${item.hindi ? " · " + item.hindi : ""}`;
+      const fullAlbumLink = document.getElementById("viewFullAlbum");
+      const albumUrl = safeLinkUrl(item.albumUrl || "");
+      fullAlbumLink.hidden = !albumUrl;
+      if (albumUrl) fullAlbumLink.href = albumUrl;
       lightboxImage.hidden = !photo;
       lightboxThumbs.replaceChildren();
       if (photo) {
