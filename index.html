@@ -240,6 +240,16 @@
     @media(max-width:575px){.highlights-strip{gap:9px}.highlights-strip .highlight-card{flex-basis:148px;width:148px;height:138px}.hero-photo-collage{height:300px}.hero-photo{border-radius:14px}.highlight-card .highlight-label{left:.55rem;right:.45rem;bottom:.55rem;font-size:.73rem}.highlight-card .highlight-hindi{font-size:.7rem}#dayGrid.row-cols-2>*{flex:0 0 auto;width:100%}.day-photo{height:clamp(150px,48vw,190px)}.day-body{padding:.9rem}.day-link{overflow-wrap:anywhere}}
     @media(max-width:400px){.hero-photo-collage{height:285px}.hero-memory h1{font-size:2rem}}
     @media(prefers-reduced-motion:reduce){.highlight-card,.highlight-card img{transition:none}}
+    /* Mobile hero cards: remove empty image bands */
+    @media (max-width: 600px) {
+      .hero-photo img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
