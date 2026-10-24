@@ -240,15 +240,20 @@
     @media(max-width:575px){.highlights-strip{gap:9px}.highlights-strip .highlight-card{flex-basis:148px;width:148px;height:138px}.hero-photo-collage{height:300px}.hero-photo{border-radius:14px}.highlight-card .highlight-label{left:.55rem;right:.45rem;bottom:.55rem;font-size:.73rem}.highlight-card .highlight-hindi{font-size:.7rem}#dayGrid.row-cols-2>*{flex:0 0 auto;width:100%}.day-photo{height:clamp(150px,48vw,190px)}.day-body{padding:.9rem}.day-link{overflow-wrap:anywhere}}
     @media(max-width:400px){.hero-photo-collage{height:285px}.hero-memory h1{font-size:2rem}}
     @media(prefers-reduced-motion:reduce){.highlight-card,.highlight-card img{transition:none}}
-    /* Mobile hero cards: remove empty image bands */
-    @media (max-width: 600px) {
-      .hero-photo img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        object-position: center center !important;
-        display: block;
-      }
+    /* Mobile hero collage: cards follow each photo's own proportions.
+       This prevents cropping, stretching, and empty bands inside the photo. */
+    .hero-photo img {
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+    }
+    @media (max-width:767px) {
+      .hero-photo { height: var(--mobile-card-height, 70%) !important; width:auto !important; aspect-ratio:var(--photo-ratio, 3 / 4); }
+      .hero-photo-main { --mobile-card-height:88%; left:24%; top:4%; }
+      .hero-photo-left { --mobile-card-height:68%; left:1%; top:17%; }
+      .hero-photo-right { --mobile-card-height:65%; right:1%; top:25%; }
     }
   </style>
 </head>
@@ -523,7 +528,14 @@ if (linkedinLink && contactConfig.linkedinUrl) {
         if (src) {
           const img = document.createElement("img");
           img.src = src; img.alt = item.alt || "Navratri celebration"; img.loading = "lazy";
-          img.style.cssText = "position:absolute;inset:0;width:100%;height:100%;object-fit:cover";
+          img.style.cssText = "position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center";
+          const setPhotoRatio = () => {
+            if (img.naturalWidth && img.naturalHeight) {
+              frame.style.setProperty("--photo-ratio", `${img.naturalWidth} / ${img.naturalHeight}`);
+            }
+          };
+          img.addEventListener("load", setPhotoRatio, { once: true });
+          if (img.complete) setPhotoRatio();
           img.addEventListener("error", () => { img.remove(); frame.classList.remove("has-image"); });
           frame.prepend(img);
         }
