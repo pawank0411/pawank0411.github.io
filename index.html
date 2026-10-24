@@ -255,6 +255,24 @@
       .hero-photo-left { --mobile-card-height:68%; left:1%; top:17%; }
       .hero-photo-right { --mobile-card-height:65%; right:1%; top:25%; }
     }
+    /* Final mobile collage alignment: shift the overlapping cards left so the main photo stays in view. */
+    @media (max-width: 767px) {
+      .hero-photo-main {
+        left: 12% !important;
+        right: auto !important;
+        transform: rotate(3deg) !important;
+      }
+      .hero-photo-left {
+        left: -2% !important;
+        right: auto !important;
+        transform: rotate(-5deg) !important;
+      }
+      .hero-photo-right {
+        right: 10% !important;
+        left: auto !important;
+        transform: rotate(5deg) !important;
+      }
+    }
   </style>
 </head>
 <body>
